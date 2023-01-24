@@ -28,6 +28,15 @@
                 insertbefore=EOF
     when: '"vm" in group_names'
 
+  - name: Install ca-certificates
+    yum: name=ca-certificates state=latest
+
+  - name: Install Release SCL RH
+    yum: name=centos-release-scl-rh state=present
+
+  - name: Install llvm toolset
+    yum: name=llvm-toolset-7-clang state=latest
+
   # Setup PostgreSQL 11 Repo
   - stat: path=/etc/yum.repos.d/pgdg-11-centos.repo
     register: pg_repo
