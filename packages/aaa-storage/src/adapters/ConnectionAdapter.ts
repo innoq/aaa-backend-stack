@@ -20,6 +20,7 @@ export interface IPGConnectionOptions {
     database: string;
     timezone: string;
     pool?: Partial<IPGConnectionPoolOptions>;
+    dialectOptions?: any;
 }
 
 export interface IPGConnectionPoolOptions {
