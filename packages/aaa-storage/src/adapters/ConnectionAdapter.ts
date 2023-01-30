@@ -7,7 +7,7 @@ import * as Sequelize from "sequelize";
 import dataloader, { resetCache as dataloaderResetCache } from "dataloader-sequelize";
 import * as bluebirdRetry from "bluebird-retry";
 import * as os from "os";
-const pg = require("pg").native;
+const pg = require("pg");
 
 // Settings
 pg.defaults.parseInt8 = true; // TODO: This setting casts BIGINT types to JS numbers with a potential overflow. Maybe replace with own datatype parser that errors out on overflow?
@@ -420,7 +420,7 @@ export class ConnectionAdapter<TConfig extends IConnectionAdapterConfig> {
                     }, {
                             ...restPGConfig,
                             dialect: "postgres",
-                            native: true,
+                            native: false,
                         }));
 
                     logger.debug({
